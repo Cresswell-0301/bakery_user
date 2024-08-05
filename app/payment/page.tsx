@@ -1,5 +1,3 @@
-"use client";
-
 import Loader from "@/components/Loader";
 import PaymentForm from "@/components/PaymentForm";
 import React, { useEffect, useState } from "react";

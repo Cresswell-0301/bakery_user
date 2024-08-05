@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import toast from "react-hot-toast";
 
 const usePaymentMethod = () => {
   const [paymentMethod, setPaymentMethod] = useState([]);

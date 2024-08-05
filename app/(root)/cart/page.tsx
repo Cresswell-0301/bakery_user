@@ -19,7 +19,7 @@ const Cart = () => {
   const cart = useCart();
   const currencyCode = useCurrencyCode();
   const [selectPayment, setSelectPayment] = useState("");
-  const paymentMethod = usePaymentMethod();
+  const paymentMethod: PaymentMethodType[] = usePaymentMethod();
 
   useEffect(() => {
     if (currencyCode && paymentMethod) {

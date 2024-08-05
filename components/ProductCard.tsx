@@ -9,7 +9,7 @@ import AddToCart from "./AddToCart";
 
 interface ProductCardProps {
   product: ProductType;
-  code: CurrencyCodeType;
+  code: CurrencyCodeType["code"];
   updateSignedInUser?: (updatedUser: UserType) => void;
 }
 

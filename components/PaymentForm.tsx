@@ -169,7 +169,10 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
             <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
             <div className="space-y-4">
               {cart.map((item) => (
-                <div className="flex justify-between items-center py-2 border-b border-gray-200">
+                <div
+                  key={item}
+                  className="flex justify-between items-center py-2 border-b border-gray-200"
+                >
                   <div>
                     <p className="font-semibold">{item.item.title}</p>
                     <p className="text-sm text-gray-600">

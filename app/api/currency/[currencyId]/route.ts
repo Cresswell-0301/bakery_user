@@ -11,13 +11,19 @@ export const GET = async (
     const currency = await Currency.findById(params.currencyId);
 
     if (!currency) {
-      return { status: 404, body: { message: "Currency Not Found" } };
+      return NextResponse.json(
+        { message: "Currency not found" },
+        { status: 404 }
+      );
     }
 
     return NextResponse.json(currency, { status: 200 });
   } catch (err) {
     console.log("[currencyId_GET]", err);
-    return { status: 500, body: "Internal Server Error" };
+    return NextResponse.json(
+      { message: "Internal server error" },
+      { status: 500 }
+    );
   }
 };
 

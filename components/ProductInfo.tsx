@@ -10,7 +10,7 @@ const ProductInfo = ({
   code,
 }: {
   productInfo: ProductType;
-  code: CurrencyCodeType;
+  code: CurrencyCodeType["code"];
 }) => {
   const [selectedColor, setSelectedColor] = useState<string>(
     productInfo.colors[0]

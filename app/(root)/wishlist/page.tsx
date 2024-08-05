@@ -2,10 +2,9 @@
 
 import Loader from "@/components/Loader";
 import ProductCard from "@/components/ProductCard";
-import { getCurrencyCode, getProductDetails } from "@/lib/actions/actions";
+import { getProductDetails } from "@/lib/actions/actions";
 import { useUser } from "@clerk/nextjs";
-import { set } from "mongoose";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Wishlist = () => {
   const { user } = useUser();
@@ -13,7 +12,9 @@ const Wishlist = () => {
   const [loading, setLoading] = useState(true);
   const [signedInUser, setSignedInUser] = useState<UserType | null>(null);
   const [wishlist, setWishlist] = useState<ProductType[]>([]);
-  const [currencyCode, setCurrencyCode] = useState<CurrencyCodeType | "RM">();
+  const [currencyCode, setCurrencyCode] = useState<CurrencyCodeType | any>(
+    "RM"
+  );
 
   const getUser = async () => {
     try {
@@ -24,6 +25,31 @@ const Wishlist = () => {
     } catch (err) {
       console.log("[users_GET", err);
     }
+  };
+
+  const getCurrency = async () => {
+    setLoading(true);
+
+    if (!signedInUser) return;
+
+    try {
+      const res = await fetch("/api/currency", {
+        method: "GET",
+      });
+      if (!res.ok) {
+        throw new Error("Failed to fetch currency code");
+      }
+      const data = (await res.json()) as CurrencyCodeType[];
+
+      if (data) {
+        setCurrencyCode(data[0].code);
+      } else {
+        throw new Error("Currency code not found");
+      }
+    } catch (err) {
+      console.log("[currency_GET]", err);
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -47,27 +73,6 @@ const Wishlist = () => {
     setLoading(false);
   };
 
-  const getCurrency = async () => {
-    setLoading(true);
-
-    if (!signedInUser) return;
-
-    try {
-      const res = await fetch("/api/currency", {
-        method: "GET",
-      });
-      if (!res.ok) {
-        throw new Error("Failed to fetch currency code");
-      }
-      const data = await res.json();
-      setCurrencyCode(data[0].code);
-    } catch (err) {
-      console.log("[currency_GET]", err);
-    }
-
-    setLoading(false);
-  };
-
   useEffect(() => {
     if (signedInUser) {
       getWishlistProducts();
@@ -78,6 +83,8 @@ const Wishlist = () => {
   const updateSignedInUser = (updatedUser: UserType) => {
     setSignedInUser(updatedUser);
   };
+
+  console.log(currencyCode);
 
   return loading ? (
     <Loader />

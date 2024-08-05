@@ -4,7 +4,6 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HeartFavorite from "./HeartFavorite";
-import { ShoppingCart } from "lucide-react";
 import useCart from "@/lib/hooks/useCart";
 import AddToCart from "./AddToCart";
 

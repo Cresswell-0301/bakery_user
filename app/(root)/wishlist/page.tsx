@@ -56,7 +56,7 @@ const Wishlist = () => {
         method: "GET",
       });
       const data = await res.json();
-      setCurrencyCode(data[0].code);
+      setCurrencyCode(data);
     } catch (err) {
       console.log("[currency_GET]", err);
     }
@@ -87,7 +87,7 @@ const Wishlist = () => {
             key={product._id}
             product={product}
             updateSignedInUser={updateSignedInUser}
-            code={currencyCode}
+            code={currencyCode[0].code || "RM"}
           />
         ))}
       </div>

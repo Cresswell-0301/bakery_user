@@ -1,3 +1,5 @@
+"use client";
+
 import Loader from "@/components/Loader";
 import useCart from "@/lib/hooks/useCart";
 import { CircleCheckBig } from "lucide-react";

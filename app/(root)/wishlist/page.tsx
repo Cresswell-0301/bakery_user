@@ -4,6 +4,7 @@ import Loader from "@/components/Loader";
 import ProductCard from "@/components/ProductCard";
 import { getCurrencyCode, getProductDetails } from "@/lib/actions/actions";
 import { useUser } from "@clerk/nextjs";
+import { set } from "mongoose";
 import { use, useEffect, useState } from "react";
 
 const Wishlist = () => {
@@ -12,7 +13,7 @@ const Wishlist = () => {
   const [loading, setLoading] = useState(true);
   const [signedInUser, setSignedInUser] = useState<UserType | null>(null);
   const [wishlist, setWishlist] = useState<ProductType[]>([]);
-  const [currencyCode, setCurrencyCode] = useState<CurrencyCodeType | null>();
+  const [currencyCode, setCurrencyCode] = useState<CurrencyCodeType | "RM">();
 
   const getUser = async () => {
     try {
@@ -55,8 +56,11 @@ const Wishlist = () => {
       const res = await fetch("/api/currency", {
         method: "GET",
       });
+      if (!res.ok) {
+        throw new Error("Failed to fetch currency code");
+      }
       const data = await res.json();
-      setCurrencyCode(data);
+      setCurrencyCode(data[0].code);
     } catch (err) {
       console.log("[currency_GET]", err);
     }
@@ -87,7 +91,7 @@ const Wishlist = () => {
             key={product._id}
             product={product}
             updateSignedInUser={updateSignedInUser}
-            code={currencyCode[0].code || "RM"}
+            code={currencyCode}
           />
         ))}
       </div>

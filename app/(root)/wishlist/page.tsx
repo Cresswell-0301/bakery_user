@@ -84,8 +84,6 @@ const Wishlist = () => {
     setSignedInUser(updatedUser);
   };
 
-  console.log(currencyCode);
-
   return loading ? (
     <Loader />
   ) : (

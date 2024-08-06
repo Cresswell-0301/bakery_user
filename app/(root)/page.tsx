@@ -3,15 +3,22 @@ import ProductList from "@/components/ProductList";
 
 import Image from "next/image";
 
-export default function Home() {
+const Home = () => {
   return (
     <>
-      <Image src="/banner.png" alt="banner" width={2000} height={1000} className="w-screen" />
+      <Image
+        src="/banner.png"
+        alt="banner"
+        width={2000}
+        height={1000}
+        className="w-screen"
+      />
       <Collections />
       <ProductList />
     </>
   );
-}
+};
 
 export const dynamic = "force-dynamic";
 
+export default Home;

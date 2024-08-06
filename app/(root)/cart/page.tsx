@@ -40,6 +40,8 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
+    toast.dismiss();
+
     try {
       if (!user) {
         router.push("sign-in");
@@ -49,35 +51,34 @@ const Cart = () => {
         );
 
         if (!methodRecord) {
-          toast.error("Please select a valid payment method");
-          return;
-        }
-
-        if (selectPayment) {
-          toast.success("Proceed to checkout");
-
-          if (selectPayment == "Stripe") {
-            const res = await fetch(
-              `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-              {
-                method: "POST",
-                body: JSON.stringify({ cartItems: cart.cartItems, customer }),
-              }
-            );
-            const data = await res.json();
-            window.location.href = data.url;
-          } else {
-            const url = `/payment?cart=${encodeURIComponent(
-              JSON.stringify(cart.cartItems)
-            )}&customer=${encodeURIComponent(
-              JSON.stringify(customer)
-            )}&paymentMethod=${encodeURIComponent(
-              JSON.stringify(methodRecord)
-            )}`;
-            router.push(url);
-          }
-        } else {
           toast.error("Please select a payment method");
+        } else {
+          if (cart.cartItems.length > 0) {
+            toast.success("Proceed to checkout");
+
+            if (selectPayment == "Stripe") {
+              const res = await fetch(
+                `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+                {
+                  method: "POST",
+                  body: JSON.stringify({ cartItems: cart.cartItems, customer }),
+                }
+              );
+              const data = await res.json();
+              window.location.href = data.url;
+            } else {
+              const url = `/payment?cart=${encodeURIComponent(
+                JSON.stringify(cart.cartItems)
+              )}&customer=${encodeURIComponent(
+                JSON.stringify(customer)
+              )}&paymentMethod=${encodeURIComponent(
+                JSON.stringify(methodRecord)
+              )}`;
+              router.push(url);
+            }
+          } else {
+            toast.error("No item in cart");
+          }
         }
       }
     } catch (err) {

@@ -196,32 +196,36 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
               </div>
             </div>
 
-            <div className="mt-8 flex flex-col items-center">
-              <h3 className="text-lg font-semibold mb-4">
-                Scan QR Code to Pay
-              </h3>
-              <div className="bg-white p-2 inline-block rounded-lg shadow-md">
-                <img
-                  src={form.watch("paymentMethodImage")}
-                  alt="QR Code for Payment"
-                  className="w-48 h-48 rounded-lg"
-                />
-              </div>
-            </div>
+            {method?.name != "Cash On Delivery" && (
+              <>
+                <div className="mt-8 flex flex-col items-center">
+                  <h3 className="text-lg font-semibold mb-4">
+                    Scan QR Code to Pay
+                  </h3>
+                  <div className="bg-white p-2 inline-block rounded-lg shadow-md">
+                    <img
+                      src={form.watch("paymentMethodImage")}
+                      alt="QR Code for Payment"
+                      className="w-48 h-48 rounded-lg"
+                    />
+                  </div>
+                </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mt-5">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <i className="fas fa-info-circle text-blue-400"></i>
+                <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mt-5">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <i className="fas fa-info-circle text-blue-400"></i>
+                    </div>
+                    <div className="ml-3">
+                      <p className="text-sm text-blue-700">
+                        Scan the QR code to pay, then submit the form to confirm
+                        your order.
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className="ml-3">
-                  <p className="text-sm text-blue-700">
-                    Scan the QR code to pay, then submit the form to confirm
-                    your order.
-                  </p>
-                </div>
-              </div>
-            </div>
+              </>
+            )}
           </div>
 
           {/* Right Side */}

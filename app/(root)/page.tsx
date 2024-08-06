@@ -20,6 +20,5 @@ const Home = () => {
 };
 
 export const dynamic = "force-dynamic";
-export const revalidate = 60; // revalidate the data at most every miniute
 
 export default Home;

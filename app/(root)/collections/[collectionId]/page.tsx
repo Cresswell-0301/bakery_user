@@ -41,6 +41,5 @@ const CollectionDetails = async ({
 };
 
 export default CollectionDetails;
-export const revalidate = 60; // revalidate the data at most every miniute
 
 export const dynamic = "force-dynamic";

@@ -2,12 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { StaticImageData } from "next/image";
-import image1 from "@/public/image1.jpg";
-import image2 from "@/public/image2.jpg";
-import image3 from "@/public/image3.jpg";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import toast from "react-hot-toast";
 import Loader from "./Loader";
 
 const BannerImage = () => {
@@ -56,13 +51,12 @@ const BannerImage = () => {
   const getImages = async () => {
     const res = await fetch("/api/banner");
     const data = await res.json();
-    if (!data) {
-      toast.error("Failed to fetch images");
-      throw new Error("Failed to fetch images");
-    } else {
+    if (data) {
       setImages(data[0].image);
-      setLoading(false);
+    } else {
+      setImages(["/banner.png"]);
     }
+    setLoading(false);
   };
 
   useEffect(() => {

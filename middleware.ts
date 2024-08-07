@@ -6,6 +6,9 @@ export default authMiddleware({
 
   // No Required Login ( Deploy )
   publicRoutes: ["/"],
+
+  // No need auth to access this route
+  ignoredRoutes: ["/api/banner"],
 });
 
 export const config = {

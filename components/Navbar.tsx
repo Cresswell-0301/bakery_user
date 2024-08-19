@@ -91,6 +91,9 @@ const Navbar = () => {
             <Link href="/" className="hover:text-red-1">
               Home
             </Link>
+            <Link href="/products" className="hover:text-red-1">
+              Products
+            </Link>
             <Link
               href={user ? "/wishlist" : "/sign-in"}
               className="hover:text-red-1"

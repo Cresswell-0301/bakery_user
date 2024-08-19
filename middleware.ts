@@ -5,7 +5,7 @@ export default authMiddleware({
   // publicRoutes: ["/api/:path*"],
 
   // No Required Login ( Deploy )
-  publicRoutes: ["/"],
+  publicRoutes: ["/", "/products"],
 
   // No need auth to access this route
   ignoredRoutes: ["/api/banner"],

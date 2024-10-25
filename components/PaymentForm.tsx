@@ -103,7 +103,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
       },
       phoneNo: "",
       attachment: "",
-      createdAt: new Date().toISOString(),
+      createdAt: "",
     },
   });
 

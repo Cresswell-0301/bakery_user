@@ -3,6 +3,7 @@
 import Loader from "@/components/Loader";
 import PaymentForm from "@/components/PaymentForm";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const PaymentPage = () => {
   const [loading, setLoading] = useState(true);
@@ -21,14 +22,20 @@ const PaymentPage = () => {
     const paymentMethod = url.searchParams.get("paymentMethod");
 
     if (cartData && customerData && paymentMethod) {
-      setCart(JSON.parse(decodeURIComponent(cartData)));
-      setCustomer(JSON.parse(decodeURIComponent(customerData)));
-      setMethod(JSON.parse(decodeURIComponent(paymentMethod)));
-    }
+      setCart(JSON.parse(cartData));
+      setCustomer(JSON.parse(customerData));
+      setMethod(JSON.parse(paymentMethod));
 
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    } else {
+      toast.dismiss();
+      toast.error("Invalid data");
+      setTimeout(() => {
+        window.location.href = "/cart";
+      }, 2000);
+    }
   }, []);
 
   return loading ? (

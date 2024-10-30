@@ -15,7 +15,7 @@ const ProductList = async () => {
       {!publishedProducts || publishedProducts.length === 0 ? (
         <p className="text-body-bold">No products found</p>
       ) : (
-        <div className="flex flex-wrap justify-center gap-16">
+        <div className="flex flex-wrap justify-center gap-8">
           {publishedProducts.map((product: ProductType) => (
             <ProductCard
               key={product._id}

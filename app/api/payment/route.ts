@@ -35,12 +35,6 @@ export const POST = async (req: NextRequest) => {
 
     await connectToDB();
 
-    // calculate the total amount
-    const totalAmount = orderItems.reduce(
-      (acc: number, item: any) => acc + item.totalPrice,
-      0
-    );
-
     // Create new order
     const newOrder = new Order({
       customerClerkId: customerInfo.clerkId,

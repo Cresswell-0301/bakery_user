@@ -58,8 +58,33 @@ const Orders = async () => {
                       </span>
                     </p>
 
-                    <p className="text-small-medium flex justify-end mt-auto">
-                      <span className="text-[14px] font-[500] leading-[140%]">
+                    <p className="text-small-medium flex mt-auto">
+                      <span
+                        className={`text-[14px] font-[500] leading-[140%] px-[5px] py-[0.5] rounded-full text-white 
+                        ${
+                          orderItem.status === "paid" ||
+                          orderItem.status === "refund"
+                            ? "bg-green-500"
+                            : orderItem.status === "pending"
+                            ? "bg-yellow-500"
+                            : orderItem.status === "received_order"
+                            ? "bg-black"
+                            : orderItem.status === "preparing"
+                            ? "bg-blue-500"
+                            : orderItem.status === "delivery"
+                            ? "bg-orange-400"
+                            : orderItem.status === "done"
+                            ? "bg-grey-2"
+                            : "bg-red-500"
+                        }`}
+                      >
+                        {orderItem.status === "received_order"
+                          ? "Order Received"
+                          : orderItem.status.charAt(0).toUpperCase() +
+                            orderItem.status.slice(1)}
+                      </span>
+
+                      <span className="text-[14px] font-[500] leading-[140%] ml-auto">
                         {currencyCode[0].code}{" "}
                         {(orderItem.product.price * orderItem.quantity).toFixed(
                           2

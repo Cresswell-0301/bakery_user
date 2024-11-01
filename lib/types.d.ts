@@ -51,6 +51,7 @@ type OrderItemType = {
   color: string;
   size: string;
   quantity: number;
+  status: string;
   _id: string;
 };
 

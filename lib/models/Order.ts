@@ -16,6 +16,10 @@ const orderSchema = new mongoose.Schema({
       color: String,
       size: String,
       quantity: Number,
+      status: {
+        type: String,
+        default: "pending",
+      },
     },
   ],
   shippingAddress: {

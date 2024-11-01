@@ -29,18 +29,14 @@ const ProductCard = ({
   return (
     <Link
       href={`/products/${product._id}`}
-      // className="w-[220px] flex flex-col gap-2"
-      className="w-[155px] flex flex-col gap-2"
+      className="min-w-[135px] w-[20%] max-w-[155px] flex flex-col gap-2"
     >
       <Image
         src={product.media[0]}
         alt="product"
         width={250}
         height={300}
-        // width={180}
-        // height={230}
-        // className="h-[250px] rounded-lg object-cover"
-        className="h-[180px] rounded-lg object-cover"
+        className="min-h-[150px] h-[8%] max-h-[180px] rounded-lg object-cover"
       />
       <div>
         <p className="text-base-bold">{product.title}</p>

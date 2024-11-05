@@ -7,8 +7,13 @@ import ProductImage from "@/components/OrderImage";
 
 const Orders = async () => {
   const { userId } = auth();
-  const orders = await getOrders(userId as string);
+  let orders = await getOrders(userId as string);
   const currencyCode = await getCurrencyCode();
+
+  orders = orders?.sort(
+    (a: OrderType, b: OrderType) =>
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
 
   return (
     <div className="px-10 py-5 max-sm:px-3">
@@ -94,6 +99,12 @@ const Orders = async () => {
                   </div>
                 </div>
               ))}
+              {order.remarks && (
+                <p className="text-small-medium">
+                  <span className="text-small-bold">Remarks:</span>{" "}
+                  {order.remarks}
+                </p>
+              )}
               <p className="text-base-bold text-right">
                 Total{" "}
                 {order.products.reduce(

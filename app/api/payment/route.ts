@@ -47,6 +47,7 @@ export const POST = async (req: NextRequest) => {
       status: "pending",
       phoneNo: formValues.phoneNo,
       attachment: formValues.attachment,
+      remarks: formValues.remarks,
       createdAt: new Date(
         new Date().getTime() + 8 * 60 * 60 * 1000
       ).toISOString(),

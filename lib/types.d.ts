@@ -43,6 +43,7 @@ type OrderType = {
   block: string;
   phoneNo: string;
   attachment: string;
+  remarks: string;
   createdAt: string;
 };
 

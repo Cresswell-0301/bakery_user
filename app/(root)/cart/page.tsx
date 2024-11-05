@@ -101,7 +101,7 @@ const Cart = () => {
             {cart.cartItems.map((cartItem) => (
               <div
                 key={cartItem.item._id}
-                className="w-full flex max-sm:flex-col max-sm:gap-3 hover:bg-grey-1 px-4 py-3 items-center max-sm:items-start justify-between"
+                className="w-full flex max-sm:flex-row max-sm:gap-3 hover:bg-grey-1 px-4 py-3 items-center max-sm:items-start justify-between"
               >
                 <div className="flex items-center w-[70%]">
                   <Image
@@ -125,22 +125,24 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-4 items-center">
-                  <MinusCircle
+                <div className="flex flex-col gap-5 items-center mt-auto mb-auto">
+                  <div className="flex gap-3 items-center">
+                    <MinusCircle
+                      className="hover:text-red-1 cursor-pointer"
+                      onClick={() => cart.decreaseQuantity(cartItem.item._id)}
+                    />
+                    <p className="text-body-bold">{cartItem.quantity}</p>
+                    <PlusCircle
+                      className="hover:text-red-1 cursor-pointer"
+                      onClick={() => cart.increaseQuantity(cartItem.item._id)}
+                    />
+                  </div>
+
+                  <Trash
                     className="hover:text-red-1 cursor-pointer"
-                    onClick={() => cart.decreaseQuantity(cartItem.item._id)}
-                  />
-                  <p className="text-body-bold">{cartItem.quantity}</p>
-                  <PlusCircle
-                    className="hover:text-red-1 cursor-pointer"
-                    onClick={() => cart.increaseQuantity(cartItem.item._id)}
+                    onClick={() => cart.removeItem(cartItem.item._id)}
                   />
                 </div>
-
-                <Trash
-                  className="hover:text-red-1 cursor-pointer"
-                  onClick={() => cart.removeItem(cartItem.item._id)}
-                />
               </div>
             ))}
           </div>

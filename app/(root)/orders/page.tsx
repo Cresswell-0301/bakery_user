@@ -46,10 +46,15 @@ const Orders = async () => {
                   />
                   <div className="flex flex-col w-full">
                     <p className="text-small-medium">
-                      <span className="text-small-bold">
+                      <span className="text-body-semibold">
                         <a href={`/products/${orderItem.product._id}`}>
                           {orderItem.product.title}
                         </a>
+                      </span>
+                    </p>
+                    <p className="text-small-medium flex flex-row justify-between text-gray-400">
+                      <span className="text-[14px] font-[500] leading-[140%]">
+                        {orderItem.product.sizes}
                       </span>
                     </p>
                     <p className="text-small-medium flex flex-row justify-between">

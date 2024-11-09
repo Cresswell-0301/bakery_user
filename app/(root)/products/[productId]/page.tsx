@@ -25,7 +25,7 @@ const ProductDetails = async ({
 
       <div className="flex flex-col items-center px-10 py-5 max-md:px-3">
         <p className="text-heading3-bold">Related Products</p>
-        <div className="flex flex-wrap gap-16 mx-auto mt-8">
+        <div className="flex flex-wrap gap-10 mx-auto mt-8">
           {relatedProducts?.map((product: ProductType) => (
             <ProductCard
               key={product._id}

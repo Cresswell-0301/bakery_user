@@ -9,15 +9,13 @@ const SearchPage = async ({ params }: { params: { query: string } }) => {
   const currencyCode = await getCurrencyCode();
 
   return (
-    <div className="px-10 py-5">
-      <p className="text-heading3-bold my-10">
-        Search results for {decodedQuery}
-      </p>
+    <div className="flex flex-col items-center gap-10 py-8 px-5">
+      <p className="text-heading3-bold ">Search results for {decodedQuery}</p>
       {!searchedProducts ||
         (searchedProducts.length === 0 && (
           <p className="text-body-bold my-5">No result found</p>
         ))}
-      <div className="flex flex-wrap justify-between gap-16">
+      <div className="flex flex-wrap justify-center gap-8">
         {searchedProducts?.map((product: ProductType) => (
           <ProductCard
             key={product._id}

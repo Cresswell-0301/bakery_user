@@ -11,6 +11,10 @@ const BannerImage = () => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [images, setImages] = useState<string[]>([]);
 
+  useEffect(() => {
+    getImages();
+  }, []);
+
   // Function to show the previous slide
   const prevSlide = (): void => {
     setCurrentIndex(
@@ -22,21 +26,6 @@ const BannerImage = () => {
   const nextSlide = (): void => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
-
-  // useEffect hook to handle automatic slide transition
-  useEffect(() => {
-    // Start interval for automatic slide change if not hovered
-    if (!isHovered) {
-      const interval = setInterval(() => {
-        nextSlide();
-      }, 3000);
-
-      // Cleanup the interval on component unmount
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [isHovered, images]);
 
   // Handle mouse over event
   const handleMouseOver = (): void => {
@@ -54,14 +43,30 @@ const BannerImage = () => {
     if (data) {
       setImages(data[0].image);
     } else {
-      setImages(["/banner.png"]);
+      setImages([`/cake_banner.jpg`, `/cookie_banner.jpg`]);
     }
+    setCurrentIndex(images.length);
     setLoading(false);
   };
 
+  // useEffect hook to handle automatic slide transition
   useEffect(() => {
-    getImages();
-  }, []);
+    // Start interval for automatic slide change if not hovered
+    if (!isHovered) {
+      const interval = setInterval(() => {
+        nextSlide();
+      }, 3000);
+
+      // Cleanup the interval on component unmount
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [isHovered, images]);
+
+  if (isNaN(images.length) || isNaN(currentIndex)) {
+    window.location.reload();
+  }
 
   return loading ? (
     <Loader />

@@ -8,7 +8,7 @@ export default authMiddleware({
   publicRoutes: ["/", "/products"],
 
   // No need auth to access this route
-  ignoredRoutes: ["/api/banner", "/api/intro"],
+  ignoredRoutes: ["/api/banner", "/api/intro", "/api/icon_image"],
 });
 
 export const config = {

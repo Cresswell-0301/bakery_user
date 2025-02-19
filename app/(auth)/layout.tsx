@@ -7,8 +7,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "o.oitsbakery",
-  description: "Login to o.oitsbakery",
+  title: process.env.BAKERY_NAME,
+  description: "Login to " + process.env.BAKERY_NAME,
 };
 
 export default function RootLayout({

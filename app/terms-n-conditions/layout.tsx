@@ -5,7 +5,7 @@ import "../globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "o.oitsbakery | Terms and Conditions",
+  title: process.env.BAKERY_NAME + " | Terms and Conditions",
   description: "Terms & Conditions",
 };
 

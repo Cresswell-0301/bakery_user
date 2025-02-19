@@ -18,7 +18,7 @@ const TnCPage = () => {
           </h1>
 
           <p className="mb-4">
-            Welcome to o.oitsbakery. By accessing and using this website, you
+            Welcome to {process.env.BAKERY_NAME}. By accessing and using this website, you
             agree to comply with and be bound by the following terms and
             conditions. Please read these carefully before using our services.
           </p>
@@ -36,7 +36,7 @@ const TnCPage = () => {
             2. Changes to Website
           </h2>
           <p className="mb-4">
-            o.oitsbakery reserves the right, at any time without prior notice to
+            {process.env.BAKERY_NAME} reserves the right, at any time without prior notice to
             you, to change the format and content of the website at any time. By
             using this website, you agree in advance to accept any such changes.
           </p>
@@ -94,7 +94,7 @@ const TnCPage = () => {
             9. Limitation of Liability
           </h2>
           <p className="mb-4">
-            o.oitsbakery will not be liable for any indirect, special or
+            {process.env.BAKERY_NAME} will not be liable for any indirect, special or
             consequential loss or damage arising from your use of this website.
           </p>
 

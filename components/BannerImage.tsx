@@ -40,11 +40,11 @@ const BannerImage = () => {
   const getImages = async () => {
     const res = await fetch("/api/banner");
     const data = await res.json();
-    if (data) {
+
+    if ((data[0].image).length != 0) {
       setImages(data[0].image);
-    } else {
-      setImages([`/cake_banner.jpg`, `/cookie_banner.jpg`]);
     }
+
     setCurrentIndex(images.length);
     setLoading(false);
   };
@@ -64,13 +64,15 @@ const BannerImage = () => {
     }
   }, [isHovered, images]);
 
-  if (isNaN(images.length) || isNaN(currentIndex)) {
-    window.location.reload();
+  if (images.length === 0) {
+    return null;
   }
 
   return loading ? (
     <Loader />
   ) : (
+    // add checking if the image.length = 0 then return null
+
     <div className="relative w-full">
       <div
         className="relative w-full aspect-w-2 aspect-h-1"

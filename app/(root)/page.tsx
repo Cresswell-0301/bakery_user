@@ -5,14 +5,14 @@ import ProductList from "@/components/ProductList";
 
 const Home = () => {
   return (
-    <>
-      <main className="flex flex-col items-center  py-2">
+    <div className="pb-1">
+      <main className="flex flex-col items-center py-2">
         <BannerImage />
       </main>
       <Introduction />
       <Collections />
-      <ProductList />
-    </>
+      <ProductList isHome />
+    </div>
   );
 };
 

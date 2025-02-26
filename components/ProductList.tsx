@@ -1,7 +1,12 @@
 import { getProducts, getCurrencyCode } from "@/lib/actions/actions";
 import ProductCard from "./ProductCard";
+import Link from "next/link";
 
-const ProductList = async () => {
+type ProductListProps = {
+  isHome?: boolean;
+};
+
+const ProductList = async ({ isHome = false }: ProductListProps) => {
   const products = await getProducts();
   const currencyCode = await getCurrencyCode();
 
@@ -10,8 +15,22 @@ const ProductList = async () => {
   );
 
   return (
-    <div className="flex flex-col items-center gap-10 py-8 px-5">
-      <p className="text-heading1-bold">Products</p>
+    <div className={isHome 
+      ? "flex flex-col items-center gap-10 my-3 py-6 mx-2 px-5 border-gray-200 border-[1px] rounded-lg bg-gray-100"
+      : "px-10 py-5"
+    }>
+
+      {isHome ? (
+        <div className="w-full flex items-center justify-between">
+          <p className="text-heading3-bold">Products</p>
+          <Link href="/products" className="text-gray-600 hover:text-black">
+            View More &gt;
+          </Link>
+        </div>
+      ) : (
+        <p className="text-heading3-bold my-10">Products</p>
+      )}
+
       {!publishedProducts || publishedProducts.length === 0 ? (
         <p className="text-body-bold">No products found</p>
       ) : (

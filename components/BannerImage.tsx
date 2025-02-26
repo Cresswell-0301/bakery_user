@@ -73,15 +73,17 @@ const BannerImage = () => {
   ) : (
     <div className="relative w-full">
       <div
-        className="relative w-full aspect-w-2 aspect-h-1"
+        className="relative w-full aspect-w-2 aspect-h-1 flex justify-center items-center"
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
         <Image
           src={images[currentIndex]}
           alt={`Slider Image ${currentIndex + 1}`}
-          width={2000}
-          height={1000}
+          width={1000}
+          // width={2000}
+          height={500}
+          // height={1000}
           className="rounded-xl transition-all duration-500 ease-in-out cursor-pointer"
         />
       </div>

@@ -71,8 +71,6 @@ const BannerImage = () => {
   return loading ? (
     <Loader />
   ) : (
-    // add checking if the image.length = 0 then return null
-
     <div className="relative w-full">
       <div
         className="relative w-full aspect-w-2 aspect-h-1"

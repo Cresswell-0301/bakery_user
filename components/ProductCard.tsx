@@ -32,7 +32,7 @@ const ProductCard = ({
       className="min-w-[150px] w-[20%] max-w-[170px] flex flex-col gap-2"
     >
       <Image
-        src={product.media[0]}
+        src={product.media[0] ? product.media[0] : "/image_not_found.png"}
         alt="product"
         width={250}
         height={300}

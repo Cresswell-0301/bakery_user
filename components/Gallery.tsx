@@ -9,7 +9,7 @@ const Gallery = ({ productMedia }: { productMedia: string[] }) => {
   return (
     <div className="flex flex-col gap-3 max-w-[500px">
       <Image
-        src={mainImage}
+        src={mainImage || "/image_not_found.png"}
         width={500}
         height={500}
         alt="product"

@@ -7,6 +7,10 @@ const customerSchema = new mongoose.Schema({
   orders: {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order"}]
   },
+  loyaltyPoints: {
+    type: Number,
+    default: 0
+  },
   createdAt: {
     type: Date,
     default: Date.now,

@@ -112,7 +112,7 @@ const Cart = () => {
                     alt="product"
                   />
                   <div className="flex flex-col gap-3 ml-4">
-                    <p className="text-body-bold">{cartItem.item.title}</p>
+                    <p className="text-body-bold" style={{ whiteSpace: 'pre-line' }}>{cartItem.item.title}</p>
                     {cartItem.color && (
                       <p className="text-small-medium">{cartItem.color}</p>
                     )}

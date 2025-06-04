@@ -26,7 +26,7 @@ const Introduction = () => {
             // Normal Text
             <div className="flex flex-col items-center gap-10 my-3 py-6 mx-2 px-5 border-gray-200 border-[1px] rounded-lg bg-gray-100">
                 <div className="flex flex-wrap items-center justify-center gap-8">
-                    <p className="text-body-medium font-serif">{intro}</p>
+                    <p className="text-body-medium font-serif" style={{ whiteSpace: 'pre-line' }}>{intro}</p>
                 </div>
             </div>
 

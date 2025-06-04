@@ -176,7 +176,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
                   className="flex justify-between items-center py-2 border-b border-gray-200"
                 >
                   <div>
-                    <p className="font-semibold">{item.item.title}</p>
+                    <p className="font-semibold" style={{ whiteSpace: 'pre-line' }}>{item.item.title}</p>
                     <p className="text-sm text-gray-600">
                       {currencyCode} {item.item.price.toFixed(2)} x{" "}
                       {item.quantity}

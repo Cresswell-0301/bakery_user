@@ -39,8 +39,8 @@ const ProductCard = ({
         className="min-h-[165px] h-[8%] max-h-[195px] rounded-lg object-cover"
       />
       <div>
-        <p className="text-base-bold">{product.title}</p>
-        <p className="text-small-medium text-grey-2">{product.category}</p>
+        <p className="text-base-bold" style={{ whiteSpace: 'pre-line' }}>{product.title}</p>
+        <p className="text-small-medium text-grey-2" style={{ whiteSpace: 'pre-line' }}>{product.category}</p>
       </div>
       <div className="flex justify-between items-center">
         <p className="text-body-bold">

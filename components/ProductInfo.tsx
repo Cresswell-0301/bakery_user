@@ -24,14 +24,14 @@ const ProductInfo = ({
 
   return (
     <div className="max-w-[400px] flex flex-col gap-4">
-      <div className="flex justify-between items-center">
-        <p className="text-heading3-bold">{productInfo.title}</p>
+      <div className="flex justify-between items-center gap-2">
+        <p className="text-heading3-bold" style={{ whiteSpace: 'pre-line' }}>{productInfo.title}</p>
         <HeartFavorite product={productInfo} />
       </div>
 
       <div className="flex gap-2">
         <p className="text-base-medium text-grey-2">Category:</p>
-        <p className="text-base-bold">{productInfo.category}</p>
+        <p className="text-base-bold" style={{ whiteSpace: 'pre-line' }}>{productInfo.category}</p>
       </div>
 
       <p className="text-heading3-bold">
@@ -40,7 +40,7 @@ const ProductInfo = ({
 
       <div className="flex flex-col gap-2">
         <p className="text-base-medium text-grey-2">Description:</p>
-        <p className="text-small-medium">{productInfo.description}</p>
+        <p className="text-small-medium" style={{ whiteSpace: 'pre-line' }}>{productInfo.description}</p>
       </div>
 
       {productInfo.colors.length > 0 && (

@@ -33,7 +33,7 @@ const Orders = async () => {
                                     <div className="flex flex-col w-full">
                                         <p className="text-small-medium">
                                             <span className="text-body-semibold">
-                                                <a href={`/products/${orderItem.product._id}`}>{orderItem.product.title}</a>
+                                                <a href={`/products/${orderItem.product._id}`} style={{ whiteSpace: 'pre-line' }}>{orderItem.product.title}</a>
                                             </span>
                                         </p>
                                         <p className="text-small-medium flex flex-row justify-between text-gray-400">
@@ -77,7 +77,7 @@ const Orders = async () => {
                                 </div>
                             ))}
                             {order.remarks && (
-                                <p className="text-small-medium">
+                                <p className="text-small-medium" style={{ whiteSpace: 'pre-line' }}>
                                     <span className="text-small-bold">Remarks:</span> {order.remarks}
                                 </p>
                             )}

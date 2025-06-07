@@ -198,7 +198,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
               </div>
             </div>
 
-            {method?.name != "Cash On Delivery" && (
+            {/* {method?.name != "Cash On Delivery" && (
               <>
                 <div className="mt-8 flex flex-col items-center">
                   <h3 className="text-lg font-semibold mb-4">
@@ -227,7 +227,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({
                   </div>
                 </div>
               </>
-            )}
+            )} */}
           </div>
 
           {/* Right Side */}

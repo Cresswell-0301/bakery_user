@@ -81,3 +81,26 @@ type CustomPaymentType = {
   attachment: string;
   createdAt: string;
 };
+
+type RewardType = {
+  _id: string;
+  name: string;
+  description: string;
+  type: string;
+  value: number;
+  change_weight: number;
+  direct_claim: boolean;
+  is_active: boolean;
+};
+
+type RewardClaimType = {
+  _id: string;
+  user_id: string;
+  reward: {
+    name: string;
+    type: string;
+    description: string;
+  };
+  claim_date: Date;
+  status: "pending" | "claimed" | "expired";
+};

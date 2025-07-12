@@ -1,6 +1,7 @@
 "use client";
 
 import useCart from "@/lib/hooks/useCart";
+import { useLoyaltyPoints } from "@/lib/providers/LoyaltyPoints";
 
 import { UserButton, useUser } from "@clerk/nextjs";
 import { CircleUserRound, Crown, Menu, Search, ShoppingCart } from "lucide-react";
@@ -19,7 +20,7 @@ const Navbar = () => {
     const [query, setQuery] = useState("");
 
     const [image, setImage] = useState("");
-    const [loyalPoints, setLoyalPoints] = useState(0);
+    const { points, setPoints } = useLoyaltyPoints();
 
     const [clerkId, setClerkId] = useState("");
 
@@ -61,7 +62,7 @@ const Navbar = () => {
 
             const data = await response.json();
 
-            setLoyalPoints(data.loyaltyPoints);
+            setPoints(data.loyaltyPoints);
         } catch (error) {
             console.error("Failed to fetch loyalty points");
         }
@@ -88,6 +89,9 @@ const Navbar = () => {
                 <Link href={user ? "/orders" : "/sign-in"} className={`hover:text-red-1 ${pathname === "/orders" && "text-red-1"}`}>
                     Orders
                 </Link>
+                <Link href={user ? "/rewards" : "/sign-in"} className={`hover:text-red-1 ${pathname === "/rewards" && "text-red-1"}`}>
+                    Rewards
+                </Link>
             </div>
 
             <div className="flex gap-3 border border-grey-2 px-3 py-1 items-center rounded-lg">
@@ -99,7 +103,7 @@ const Navbar = () => {
 
             <div className="relative flex gap-3 items-center">
                 <p className="flex items-center gap-1 border rounded-lg px-2 py-1 max-md:hidden">
-                    {loyalPoints}
+                    {points}
                     <Crown size={18} />
                 </p>
 
@@ -132,7 +136,7 @@ const Navbar = () => {
 
                         <Link href="">
                             <p className="flex items-center text-base-bold gap-2">
-                                <Crown size={18} className="ml-1" /> {loyalPoints}
+                                <Crown size={18} className="ml-1" /> {points}
                             </p>
                         </Link>
                     </div>

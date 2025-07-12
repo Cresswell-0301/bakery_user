@@ -51,3 +51,30 @@ export const getCurrencyCode = async () => {
   );
   return await currencyCode.json();
 };
+
+export const getRewards = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rewards`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch rewards");
+  }
+
+  const rewards = await response.json();
+  
+  return rewards.filter((reward: { is_active: boolean }) => reward.is_active);
+};
+
+export const getSpinPointsSetting = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/spin-setting`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch spin points");
+  }
+
+  const data = await response.json();
+  return data;
+};

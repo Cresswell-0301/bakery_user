@@ -128,6 +128,10 @@ const Navbar = () => {
                         <Link href={user ? "/orders" : "/sign-in"} className="hover:text-red-1">
                             Orders
                         </Link>
+                        <Link href={user ? "/rewards" : "/sign-in"} className="hover:text-red-1">
+                            Rewards
+                        </Link>
+
                         <Link href="/cart">
                             <p className="flex gap-2 text-base-bold items-center">
                                 <ShoppingCart size={20} /> ({cart.cartItems.length})

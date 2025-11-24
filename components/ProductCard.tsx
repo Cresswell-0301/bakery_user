@@ -29,7 +29,8 @@ const ProductCard = ({
   return (
     <Link
       href={`/products/${product._id}`}
-      className="min-w-[150px] w-[20%] max-w-[170px] flex flex-col gap-2"
+      className="min-w-[174px] w-[25%] max-w-[170px] flex flex-col gap-2 pt-1 pb-1 pl-2 pr-2 shadow-sm rounded-lg 
+      hover:shadow-md transition-shadow duration-300 bg-[#FFFFFF] border border-gray-300 hover:border-gray-400 hover:bg-gray-300"
     >
       <Image
         src={product.media[0] ? product.media[0] : "/image_not_found.png"}

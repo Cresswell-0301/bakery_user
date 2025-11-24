@@ -87,10 +87,10 @@ const Wishlist = () => {
   return loading ? (
     <Loader />
   ) : (
-    <div className="px-10 py-5">
+    <div className="px-3 py-5">
       <p className="text-heading3-bold my-10">Your Wishlist</p>
       {wishlist.length === 0 && <p>No items in your wishlist</p>}
-      <div className="flex flex-wrap justify-center gap-16">
+      <div className="flex flex-wrap justify-center gap-4">
         {wishlist.map((product) => (
           <ProductCard
             key={product._id}
